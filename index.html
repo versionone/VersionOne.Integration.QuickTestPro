@@ -1,1 +1,413 @@
-My Page
+<!--(c) Copyright 2011, VersionOne, Inc. All rights reserved. (c)-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>VersionOne HP Quick Test Professional Integration</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+<td style="width:10%"/>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            VersionOne HP Quick Test Professional Integration
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on May 25, 2011 by <font color="#0050B2">jerry</font>.
+                                    </div>
+
+				    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1280687327099 {margin-left: 0px;padding: 0px;}
+div.rbtoc1280687327099 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1280687327099 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='rbtoc1280687327099'>
+<ul>
+    <li><span class='TOCOutline'>1</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-Description'>Description</a></li>
+    <li><span class='TOCOutline'>2</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-SystemRequirements'>System Requirements</a></li>
+    <li><span class='TOCOutline'>3</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-Download'>Download</a></li>
+    <li><span class='TOCOutline'>4</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-Installation'>Installation</a></li>
+    <li><span class='TOCOutline'>5</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-Configuration'>Configuration</a></li>
+<ul>
+    <li><span class='TOCOutline'>5.1</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-ConfigureVersionOne'>Configure VersionOne </a></li>
+    <li><span class='TOCOutline'>5.2</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-ConfiguretheIntegration'>Configure the Integration </a></li>
+</ul>
+    <li><span class='TOCOutline'>6</span> <a href='#VersionOneHPQuickTestProfessionalIntegration-TechnicalDetails'>Technical Details</a></li>
+</ul></div>
+
+<h2><a name="VersionOneHPQuickTestProfessionalIntegration-Description"></a>Description</h2>
+<p>The VersionOne Quick Test Professional Integration (V1QuickTestPro) imports the results of tests defined HP's Quick Test Professional (QTP) into VersionOne. The results of an individual QTP test can be linked to a Test Artifact in VersionOne, so that development, and you organization, will receive quick feedback on which tests are passing and failing.</p>
+
+<p>Once this integration is installed, VersionOne users update the Reference field on a VersionOne Test with the test names defined in QTP. The Test Run Trend report shows the aggregated test results for the test suite which was assigned to the project at the time of the test run. For individual tests, each test in VersionOne should have its own test defined in QTP. If a test fails on a story or defect that is already closed, V1QuickTestPro can be configured to create a defect in the current iteration, so the team is notified of the failing test. </p>
+
+<p>The following sequence diagram illustrates how V1QuickTestPro interacts with QTP and VersionOne.<br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 662x520" href='attachments/QTP/7209250.png'><img src="attachments/thumbnails/QTP/7209250" border="0"/></a></span></p>
+
+<h2><a name="VersionOneHPQuickTestProfessionalIntegration-SystemRequirements"></a>System Requirements</h2>
+<ul>
+	<li>VersionOne: 7.1 or above, including Team Edition</li>
+	<li>Integration Server:
+	<ul>
+		<li>Operating System — Windows 2003, 2008</li>
+		<li>Framework—Microsoft .Net 2.0 SP1</li>
+		<li>HP Quick Test Pro—Release 9.2 — 10.0</li>
+	</ul>
+	</li>
+</ul>
+
+
+<h2><a name="VersionOneHPQuickTestProfessionalIntegration-Download"></a>Download</h2>
+<p>The latest version of V1QuickTestPro is available from <a href="http://community.versionone.com/Downloads/default.aspx">the VersionOne Community site </a></p>
+
+<h2><a name="VersionOneHPQuickTestProfessionalIntegration-Installation"></a>Installation </h2>
+<p>These installation instructions assume that QTP is already installed, configured, and working properly.</p>
+<ol>
+	<li>Determine Install Location<br/>
+V1QuickTestPro can be installed on any server with network access to both VersionOne and your QTP Test results.  Exact placement should be determined by your internal software management requirements. The integration server must meet the System Requirements stated above.<br class="atl-forced-newline" />
+<br class="atl-forced-newline" /></li>
+	<li>Extract Files<br/>
+Download V1QuickTestPro using the link above and extract it into a folder of your choice.<br class="atl-forced-newline" />
+<br class="atl-forced-newline" /></li>
+	<li>Configure
+	<ol>
+		<li><a href="#VersionOneHPQuickTestProfessionalIntegration-ConfigureVersionOne">Configure VersionOne</a></li>
+		<li><a href="#VersionOneHPQuickTestProfessionalIntegration-ConfigureServiceHost">Configure The Integration</a><br class="atl-forced-newline" />
+<br class="atl-forced-newline" /></li>
+	</ol>
+	</li>
+	<li>Start integration<br/>
+Open up the command prompt, navigate to your installation folder, and run the following command: 
+<blockquote><p><tt>VersionOne.ServiceExecutor.exe</tt></p></blockquote>
+<p>If you have configured your system properly, you should see the following output when there are no results to publish into VersionOne </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">
+C:\V1MercuryQTP&gt;VersionOne.ServiceExecutor.exe
+Loaded VersionOne.ServiceHost.Logging.ConsoleLogService, VersionOne.ServiceHost.Core.
+Loaded VersionOne.ServiceHost.Logging.FileLogService, VersionOne.ServiceHost.Core.
+Loaded VersionOne.ServiceHost.TestServices.Mercury.QTPReaderService, VersionOne.ServiceHost.TestServices.
+Loaded VersionOne.ServiceHost.TestServices.TestWriterService, VersionOne.ServiceHost.TestServices.
+[Info] Initialized ConsoleLogService
+[Info] Initializing FileLogService
+[Info] Initialized FileLogService
+[Info] Initializing QTPReaderService1
+[Info] Initialized QTPReaderService1
+[Info] Initializing TestWriterService
+[Info] Initialized TestWriterService
+[Startup]
+[Shutdown]
+
+C:\V1MercuryQTP&gt;
+</pre>
+</div></div>
+<p><br class="atl-forced-newline" /></p></li>
+	<li>Test the integration<br/>
+Before testing you must execute at least one test. Once this is complete, open up the command prompt, navigate to your installation folder, and run the following command:
+<blockquote><p><tt>VersionOne.ServiceExecutor.exe</tt></p></blockquote>
+<p>When V1QuickTestPro and VersionOne are configured correctly you should see data being published into VersionOne. </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">
+C:\V1MercuryQTP&gt;VersionOne.ServiceExecutor.exe
+Loaded VersionOne.ServiceHost.Logging.ConsoleLogService, VersionOne.ServiceHost.Core.
+Loaded VersionOne.ServiceHost.Logging.FileLogService, VersionOne.ServiceHost.Core.
+Loaded VersionOne.ServiceHost.TestServices.Mercury.QTPReaderService, VersionOne.ServiceHost.TestServices.
+Loaded VersionOne.ServiceHost.TestServices.TestWriterService, VersionOne.ServiceHost.TestServices.
+[Info] Initialized ConsoleLogService
+[Info] Initializing FileLogService
+[Info] Initialized FileLogService
+[Info] Initializing QTPReaderService1
+[Info] Initialized QTPReaderService1
+[Info] Initializing TestWriterService
+[Info] Initialized TestWriterService
+[Startup]
+[Info] Updating status of Acceptance Test <span class="code-quote">"Test:1366:1598"</span>.
+[Info] Suite:
+                TestRun.Date = 11/20/2007 9:17:20 AM
+                TestRun.Failed = 1
+                TestRun.Elapsed = 0
+                TestRun.Description = Release10TestSuite on 11/20/2007 9:17:20 AM
+                TestRun.Passed = 2
+                TestRun.NotRun = 0
+                TestRun.Name = Release10TestSuite
+                TestRun.TestSuite = TestSuite:1771
+
+[Shutdown]
+
+C:\V1MercuryQTP&gt;
+</pre>
+</div></div></li>
+	<li>Automate the process<br/>
+To automate the publishing of results after each test run is accomplished
+	<ol>
+		<li>Create a QTP test script that calls <em>VersionOne.ServiceExecutor.exe</em><br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 822x436" href='attachments/QTP/7209220.jpg'><img src="attachments/thumbnails/QTP/7209220" border="0"/></a></span></li>
+		<li>Add this script to the end of your QTP batch process.<br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 811x586" href='attachments/QTP/7209219.jpg'><img src="attachments/thumbnails/QTP/7209219" border="0"/></a></span></li>
+	</ol>
+	</li>
+</ol>
+
+
+<h2><a name="VersionOneHPQuickTestProfessionalIntegration-Configuration"></a>Configuration</h2>
+<h3><a name="VersionOneHPQuickTestProfessionalIntegration-ConfigureVersionOne"></a>Configure VersionOne<a name="VersionOneHPQuickTestProfessionalIntegration-ConfigureVersionOne"></a> </h3>
+<div class='panelMacro'><table class='infoMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/information.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>If you are using Team Edition, you need to manually create the Test Suite.  Instructions for doing this are available on the <a href="http://community.versionone.com/KnowledgeBase/FAQs/Q11420.aspx">VersionOne Community Site</a>.</td></tr></table></div>
+<ol>
+	<li>Add a TestSuite in VersionOne
+	<ol>
+		<li>A VersionOne TestSuite is created from the Administration | Project | TestSuite menu.<br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 1014x194" href='attachments/QTP/7209221.jpg'><img src="attachments/thumbnails/QTP/7209221" border="0"/></a></span></li>
+		<li>The Reference attribute on the VersionOne TestSuite defined the association to the QTP Test.<br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 912x417" href='attachments/QTP/7209216.jpg'><img src="attachments/thumbnails/QTP/7209216" border="0"/></a></span></li>
+	</ol>
+	</li>
+	<li>Assign the VersionOne TestSute to a Project<br/>
+Once the TestSuite is created, it must be assigned to a Project.  To accomplish this, edit the VersionOne Project details. <br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 912x761" href='attachments/QTP/7209218.jpg'><img src="attachments/thumbnails/QTP/7209218" border="0"/></a></span></li>
+	<li>Set the Reference Field on Test that are automated using QTP<br/>
+Before V1QuickTestPro can update a VersionOne Test you must associate the VersionOne Test with a QTP test. To configure this association, you need to edit a VersionOne Test and enter the QTP Test Name in the VersonOne Reference field. <br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 912x846" href='attachments/QTP/7209217.jpg'><img src="attachments/thumbnails/QTP/7209217" border="0"/></a></span></li>
+</ol>
+
+
+<h3><a name="VersionOneHPQuickTestProfessionalIntegration-ConfiguretheIntegration"></a>Configure the Integration<a name="VersionOneHPQuickTestProfessionalIntegration-ConfigureServiceHost"></a> </h3>
+<p>To configure V1QuickTestPro you need to run the ServiceHost configuration tool</p>
+<blockquote><p><tt>ServiceHostConfigTool.exe</tt></p></blockquote>
+<p>The following section describes how to configure your QTP integration using the use the configuration tool </p>
+<ol>
+	<li>Specify your VersionOne connection details on the <b>General</b><br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 728x711" href='attachments/QTP/7209222.png'><img src="attachments/thumbnails/QTP/7209222" border="0"/></a></span><br/>
+The following table describes the fields on this tab
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>Field</th>
+<th class='confluenceTh'>Description</th>
+</tr>
+<tr>
+<td class='confluenceTd'>Server URL</td>
+<td class='confluenceTd'>This is the URL to your VersionOne server</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Username</td>
+<td class='confluenceTd'>VersionOne user that will create defects</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Password</td>
+<td class='confluenceTd'>Password for the specified user</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Use Windows Integrated Authentication</td>
+<td class='confluenceTd'>Check this box if you VersionOne server is configured to use Windows Integrated Authentication</td>
+</tr>
+</tbody></table>
+</div>
+
+<div class='panelMacro'><table class='infoMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/information.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>When using the integrated authentication, V1QuickTestPro will authenticate to VersionOne using the Windows domain user under which the executable is running if both the username and password parameters are blank. If the username and password is entered, you must specify the windows domain account in the form "User@FullyQualifiedDomainName". If you are unsure what the fully qualified domain name is, see the Domain name shown on the 'Computer Name' tab in the My Computer...Properties dialog.</td></tr></table></div>
+<p>If there's a proxy between this machine and the VersionOne instance, you'll also need to configure the following settings:</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>Field</th>
+<th class='confluenceTh'>Description</th>
+</tr>
+<tr>
+<td class='confluenceTd'>Use Proxy For Connection</td>
+<td class='confluenceTd'>Determines if the integration tries to connect through a Proxy</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Proxy URL</td>
+<td class='confluenceTd'>This is the URL to your Proxy Server</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Proxy Username</td>
+<td class='confluenceTd'>The username that will get you past this proxy</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Proxy Password</td>
+<td class='confluenceTd'>The password for the Proxy Username</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Proxy Domain</td>
+<td class='confluenceTd'>Name of Proxy Domain</td>
+</tr>
+</tbody></table>
+</div>
+</li>
+	<li>Once the VersionOne parameters are entered, press Verify button to continue.</li>
+	<li>Specify how to update Test in VersionOne on the <b>Tests</b> tab.<br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 728x711" href='attachments/QTP/7209224.png'><img src="attachments/thumbnails/QTP/7209224" border="0"/></a></span><br/>
+The following table describes the fields on this tab
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>Field</th>
+<th class='confluenceTh'>Description</th>
+</tr>
+<tr>
+<td class='confluenceTd'>Disabled</td>
+<td class='confluenceTd'>Check this box to disable ChangeSet creation in VersionOne.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Reference Field Name</td>
+<td class='confluenceTd'>VersionOne Field name to search for QTP test identifier.  It's recommended that you use the Reference field; however if you are already using this field for another purpose, you may choose another text field, including custom fields.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Test Passed Status</td>
+<td class='confluenceTd'>Value to set when a QTP test passes</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Test Failed Status</td>
+<td class='confluenceTd'>Value to set when a QTP test fails</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Change Comment</td>
+<td class='confluenceTd'>Comment to use when setting values on VersionOne tests</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Description Suffix</td>
+<td class='confluenceTd'>If you are creating Defects, this text will appear in the description field</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Create Defect</td>
+<td class='confluenceTd'>Indicates whether V1QuickTestPro should create VersionOne Defects when a QTP test fails for closed tests in VersionOne. Valid values are:<br class="atl-forced-newline" /> * All: The integration will create a VersionOne Defect for any closed test in the project when the QTP test fails <br class="atl-forced-newline" /> * Current Iteration: The integration will only create VersionOne Defects for closed tests within the current iteration when the QTP test fails <br class="atl-forced-newline" /> * None: The integration never create VersionOne Defects<br class="atl-forced-newline" /></td>
+</tr>
+</tbody></table>
+</div>
+</li>
+	<li>Specify your QTP details on the <b>Quick Test Pro</b> tab.<br/>
+<span class="image-wrap" style=""><a class="confluence-thumbnail-link 728x711" href='attachments/QTP/7209223.png'><img src="attachments/thumbnails/QTP/7209223" border="0"/></a></span><br/>
+The following table describes the fields on this tab
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>Field</th>
+<th class='confluenceTh'>Description</th>
+</tr>
+<tr>
+<td class='confluenceTd'>Disabled</td>
+<td class='confluenceTd'>Check this box if you want to disable polling QTP for Test Results.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Watch</td>
+<td class='confluenceTd'>The directory to poll for QTP test results files.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Filter</td>
+<td class='confluenceTd'>The file filter to use when polling for QTP test results files; it may contain any valid search pattern (i.e. *.xml)</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Suite Name</td>
+<td class='confluenceTd'>The VersionOne Test Suite Name</td>
+</tr>
+</tbody></table>
+</div>
+</li>
+	<li>Save your changes and exit the program</li>
+</ol>
+
+
+<h2><a name="VersionOneHPQuickTestProfessionalIntegration-TechnicalDetails"></a>Technical Details</h2>
+<h4><a name="VersionOneHPQuickTestProfessionalIntegration-VersionOne.ServiceHost.exe.config"></a>VersionOne.ServiceHost.exe.config</h4>
+<p>VersionOne.ServiceHost.exe.config is the file that controls the behavior of <em>VersionOne.ServiceHost.exe</em>.  Values in this file are set by the configuration tool (<a href="#VersionOneHPQuickTestProfessionalIntegration-ConfigureServiceHost"><em>ServiceHostConfigTool.exe</em></a>).  This section is provided for informational use only.  Users are discouraged from editing this file directly.</p>
+
+<p>The <b>QTPReaderService</b> watches for new result files, interprets QTP test results, and publishes the results to the TestWriterService. The following table describes the elements nested under TestWriterService.</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>Element Name</th>
+<th class='confluenceTh'>Description</th>
+</tr>
+<tr>
+<td class='confluenceTd'>Watch</td>
+<td class='confluenceTd'>QTP test results output folder. Paths are relative to the V1QuickTestPro installation folder.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Filter</td>
+<td class='confluenceTd'>Specify the file you want to watch. Wildcards are accepted. By default the pattern is Results.xml.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>SuiteName</td>
+<td class='confluenceTd'>VersionOne Test Suite.</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>The <b>TestWriterService</b> element controls how Tests are updated in VersionOne. The following table describes the elements nested under TestWriterService. </p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>Element Name</th>
+<th class='confluenceTh'>Description</th>
+</tr>
+<tr>
+<td class='confluenceTd'>ApplicationUrl</td>
+<td class='confluenceTd'>The URL for your VersionOne application</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Username</td>
+<td class='confluenceTd'>The VersionOne account username, if using native VersionOne security. If using Windows Integrated Security, leave empty.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>Password</td>
+<td class='confluenceTd'>The VersionOne account password, if using native VersionOne security. If using Windows Integrated Security, leave empty.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>APIVersion</td>
+<td class='confluenceTd'>The minimum application version required for this hosted service.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>IntegratedAuth</td>
+<td class='confluenceTd'>False if using VersionOne native security, True if using Windows Integrated Security. If VersionOne is configured to use Windows Integrated Security, the account the service is running as must be a configured VersionOne user with a project role of Team Member or higher. Also, Username and Password should be empty if IntegratedAuth is true.</td>
+</tr>
+<tr>
+<td class='confluenceTd'>PassedOid</td>
+<td class='confluenceTd'>The TestStatus asset Oid in VersionOne that indicates test a test succeeded</td>
+</tr>
+<tr>
+<td class='confluenceTd'>FailedOid</td>
+<td class='confluenceTd'>The TestStatus asset Oid in VersionOne that indicates that a test failed</td>
+</tr>
+<tr>
+<td class='confluenceTd'>TestReferenceAttribute</td>
+<td class='confluenceTd'>The cross-reference used to associate tests in VersionOne to test in the external test system ('Number' is the default, 'Reference' another option)</td>
+</tr>
+<tr>
+<td class='confluenceTd'>ChangeComment</td>
+<td class='confluenceTd'>The change comment put into history for any modifications the service makes in VersionOne</td>
+</tr>
+<tr>
+<td class='confluenceTd'>DescriptionSuffix</td>
+<td class='confluenceTd'>A suffix for the description of any defects that the service creates; Embedded Rich Text (HTML) is valid in this suffix</td>
+</tr>
+<tr>
+<td class='confluenceTd'>CreateDefect</td>
+<td class='confluenceTd'>Indicates whether the TestWriterService should create VersionOne Defects when a QTP test fails for closed tests in VersionOne. Valid values are:<br class="atl-forced-newline" />
+<ul>
+	<li>All: The integration will create a VersionOne Defect for any closed test in the project when the QTP test fails</li>
+	<li>CurrentIteration: The integration will only create VersionOne Defects for closed tests within the current iteration when the QTP test fails</li>
+	<li>None: The integration never create VersionOne defects<br class="atl-forced-newline" /></li>
+</ul>
+</td>
+</tr>
+<tr>
+</tr>
+</tbody></table>
+</div>
+
+
+                    			    </td>
+<td style="width:10%"/>
+		    </tr>
+	    </table>
+ 	    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td align="left"><font color="grey">Document generated on May 25, 2011 09:53</font></td>
+		    </tr>
+	    </table> 
+    </body>
+</html>
